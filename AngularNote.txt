@@ -1,0 +1,65 @@
+*Angular - Is a Front End development tool
+
+
+*Basic commands in Angular
+    1. to create an Angular project: ng new project-name
+    2. To run an Angular project: ng serve
+    3. To generate components: ng g component-name
+    4. To generate Service : ng g s sevice-folder/service-name
+    5. To generate build : ng build
+    6. To generate userdefined pipe : ng g p pipe-folder/pipe-name
+
+*Basic Concept in Angular
+
+    1. Module :- To import 3rd party libraries, also used to hold components
+    2. Component :- Html,css,ts also have a selector 
+    3. Selector :- To replace selector tag with its html page
+    4. Decorator :- To hold meta data , Starts with symbol @
+    5. Set path for component :- To view a component in another webpage
+        -Use app.routingmodule.ts file
+        -Use router-outlet selector in root component(AppComponent) : To navigate according to the user requested path
+        -routerLink :- used to redirect from one page to another
+    6. Data binding :- Data sharing within a component (how we sharing data between ts to html)
+        - One way binding : data sharing in one direction
+        ---------------------------------------------------
+        - ts (component) to html (view) file
+    Methods for data binding ts to html:-
+        - String Interpolation : {{class property-name}}
+        - Property Binding : [attribute-name]="class property-name"
+    Methods for data binding html to ts:-
+        - Event Binding : (event-name)="function call"
+        - Event Binding using $event: (event-name)="function name($event)"    
+        - Event Binding using template referense variale: #variable-name
+    7. Two way binding : data sharing in both direction
+            :-ngModel : import FormsModule in AppModule
+            :-[(ngModule)]="Class property"
+    *  Angular forms :- 
+        - Template Driven Forms 
+        - Model Driven Forms   
+    8. Dependency injection : To share data between depentent classes
+        - constructor(access-specifier variable-name:class name){
+            
+        }    
+    9. Angular services :  to share common logic between components   
+    10. Angular Directives : DOM Manipulation
+        * Component Directives
+        * Structural Directives
+            -ngIf = "condition"
+            -ngFor = "let variable-name of array-name"
+        * Attribute Directive : to apply style to html elements
+            -ngClass
+    11. Parent child data sharing 
+            - Child to parent communication : @Output Decorator
+            - Parent to child communication : @Input Decorator
+    12. Asynchronous function handling in Angular
+            - Using RxJs(Reactive extentions for javascript) libraries
+                - It use Observable to resolve Asynchronous functions
+                - Resolve state : subscribe(observer:callback)
+                - reject state : catchError(callback)
+                    -error() : to get error response when you subscribe it 
+    13. Api call using Angular : HttpClient class
+            - Import HttpClientModule in AppModule                    
+    14. ActivatedRoute : Provides access to information about a route associated with a component that is loaded in an outlet. Use to traverse the RouterState tree and extract information from nodes.        
+    15. Pipes : to transform strings, currency amounts, date, and other data for display.
+            syntax:
+            value_expression | pipe-operator [: option 1 [: option 2 [: option 3] ] ]
