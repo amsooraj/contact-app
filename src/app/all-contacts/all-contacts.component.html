@@ -1,0 +1,73 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col">
+            <h1>All Contacts
+                <a class="btn btn-success ms-5" routerLink="add-contacts"><i class="fa-solid fa-user-plus"></i> Add New</a>
+            </h1>
+            <p style="text-align: justify;">This is Dummy content : Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius consequuntur asperiores, cumque aspernatur dolore, dicta sequi possimus placeat ducimus, provident nemo? Aliquam obcaecati consequuntur tempore. Reiciendis sequi quaerat enim ipsa? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores, suscipit temporibus deserunt nulla, molestiae corrupti cumque consequuntur qui esse dignissimos quos, repellendus rerum culpa nobis. A perferendis architecto mollitia quibusdam!</p>
+            <!-- search -->
+            <div class="row mt-5">
+                <div class="col-lg-2 fw-bolder mt-2">
+                    Search Contacts:
+                </div>
+                <div class="col-lg-6">
+                    <!-- input search box -->
+                    <input [(ngModel)]="searchKey" type="text" placeholder="Type contact name here" class="form-control me-auto">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- loading spinner -->
+
+<div *ngIf="isLoading && allContacts.length==0" class="text-center mt-5">
+    <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+</div>
+<!-- if no contact found in input field -->
+<div style="display: flex; justify-content: center; align-items: center; margin-top: 80px;" *ngIf="(allContacts|filter:searchKey:'name').length==0 && !isLoading">
+    <!-- <h3 style="text-align: center; margin-top: 20px;">No contact found</h3> -->
+    <img src="https://media.tenor.com/DwXvshhfd1AAAAAM/wheres-your-man-single.gif" alt="">
+</div>
+<!-- error msg -->
+<div *ngIf="errorMsg" class="alert alert-danger m-5" role="alert">
+    {{errorMsg}}
+</div>
+
+<div class="container mt-5">
+    <div *ngIf="!isLoading && allContacts.length>0" class="row">
+        <div class="col-lg-6 mb-3" *ngFor="let contact of allContacts | filter : searchKey : 'name' ">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col-sm-3">
+                            <!-- img -->
+                            <img width="100px" height="110px" [src]="contact.photo" alt="userimage">
+                        </div>
+                        <div class="col-sm-8">
+                            <!-- content -->
+                            <ul class="list-group">
+                                <li class="list-group-item">Name: <span class="fw-bolder">{{contact.name}}</span></li>
+                                <li class="list-group-item">Mobile: <span class="fw-bolder">{{contact.mobile}}</span></li>
+                                <li class="list-group-item">Email: <span class="fw-bolder">
+                                    {{contact.email}}
+                                </span></li>
+                            </ul>
+                        </div>
+                        <div  class="col-sm-1 d-flex flex-column justify-content-center align-items-center">
+                            <!-- actions -->
+                            <!-- view -->
+                            <a class="btn btn-warning text-light mb-1" routerLink="view-contacts/{{contact.id}}"><i class="fa-solid fa-eye"></i></a>
+                            <!-- edit -->
+                            <a class="btn btn-success text-light mb-1" routerLink="edit-contacts/{{contact.id}}"><i class="fa-solid fa-pen"></i></a>
+                            <!-- delete -->
+                            <button (click)="deleteContact(contact.id)" class="btn btn-danger text-light"><i class="fa-solid fa-trash"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

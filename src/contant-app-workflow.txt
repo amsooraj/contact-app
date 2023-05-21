@@ -1,0 +1,29 @@
+Contact Management App Work Flow
+--------------------------------
+
+
+
+
+1. Create angular project
+2. Clean the code
+3. Run project
+4. Link all external libraries : bootstrap , fontawesome , google font
+5. Create components :
+    - Header
+    - Footer
+    - All-contacts
+    - Add-contacts
+    - View-contacts
+    - Edit-contacts
+    - Page not found
+6. Delete all spec.ts file from each userdinined components
+7. Setup path for each components : AppRouting.module.ts
+    - All-contacts : path http://localhost:4200/
+    - Add-contacts : path http://localhost:4200/add-contact
+    - View-contacts : path http://localhost:4200/view-contact/id
+    - Edit-contacts : path http://localhost:4200/edit-contact/id   
+    - Page Not Found : path any path other than defined routes in project
+8. To navigate according to component use router-outlet selector in AppComponent html
+9. Design components that we created    
+10. Create services to share logic(api calls) between components : ng g s service-folder/service name
+11. Dependency inject 'HttpClient' Class in service class constructor
